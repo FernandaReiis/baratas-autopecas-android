@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_search"
+        android:title="@string/action_search"
+        app:showAsAction="always"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:icon="@android:drawable/ic_menu_search"/>
+    <item android:id="@+id/action_refresh"
+        android:icon="@drawable/ic_atualizar_white"
+        android:title="@string/action_refresh"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_add"
+        android:title="@string/action_add"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_config"
+        android:title="@string/action_config"
+        app:showAsAction="never" />
+</menu>
