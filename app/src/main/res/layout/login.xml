@@ -48,9 +48,20 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#F39249"
         android:text="Login"
-        android:textSize="20dp" />
+        android:backgroundTint="#F39249"
+        android:stateListAnimator="@null"
+        android:textSize="20dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBarLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:visibility="gone"/>
+
 
     <ImageView
         android:id="@+id/imageField"

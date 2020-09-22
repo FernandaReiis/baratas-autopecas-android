@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.SystemClock
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.login.*
@@ -23,18 +22,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onClickLogin(){
+        progressBarLogin.visibility = View.VISIBLE
 
-        val username = userField.text.toString()
-        val password = passwordField.text.toString()
+        Handler().postDelayed( {
+            val username = userField.text.toString()
+            val password = passwordField.text.toString()
 
-        val intent = Intent(context, HomeScreenActivity::class.java)
+            val intent = Intent(context, HomeScreenActivity::class.java)
 
-        intent.putExtra("username", username)
+            intent.putExtra("username", username)
 
-        if (username == "aluno" && password == "impacta") startActivityForResult(intent, 0)
-        else Toast.makeText(this, "Usuário ou senha incorretos.", Toast.LENGTH_LONG).show()
-
-
+            if (username == "aluno" && password == "impacta") startActivityForResult(intent, 0)
+            else Toast.makeText(this, "Usuário ou senha incorretos.", Toast.LENGTH_LONG).show()
+            progressBarLogin.visibility = View.GONE
+        }, 1000)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

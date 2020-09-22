@@ -2,6 +2,6 @@
     <string name="app_name">BaratasAutoPecas</string>
     <string name="action_search">Buscar</string>
     <string name="action_config">Configurações</string>
-    <string name="action_add">Adicionar</string>
     <string name="action_refresh">Atualizar</string>
+    <string name="action_logout">Sair</string>
 </resources>
