@@ -10,22 +10,21 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import kotlinx.android.synthetic.main.activity_peca.*
+import kotlinx.android.synthetic.main.activity_client.*
+import kotlinx.android.synthetic.main.activity_config.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class PecaActivity : AppCompatActivity() {
+class ClientActivity : AppCompatActivity() {
     private val context: Context get() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_peca)
         var args = intent.extras
-        val title = args?.getString("title")
-
+        val client = args?.getString("client")
+        setContentView(R.layout.activity_client)
         setSupportActionBar(toolbar_view)
-        supportActionBar?.title = title
+        supportActionBar?.title = client
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -33,12 +32,12 @@ class PecaActivity : AppCompatActivity() {
         (menu?.findItem(R.id.action_search)?.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(newText: String): Boolean {
-                Toast.makeText(this@PecaActivity, newText, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@ClientActivity, newText, Toast.LENGTH_LONG).show()
                 return false
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                Toast.makeText(this@PecaActivity, query, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@ClientActivity, query, Toast.LENGTH_LONG).show()
                 return false
             }
 
@@ -74,9 +73,9 @@ class PecaActivity : AppCompatActivity() {
     }
 
     private fun onClickRefresh(){
-        progressBarPeca.visibility = View.VISIBLE
+        progressBarClient.visibility = View.VISIBLE
         Handler().postDelayed( {
-            progressBarPeca.visibility = View.GONE
+            progressBarClient.visibility = View.GONE
         }, 10000)
     }
 

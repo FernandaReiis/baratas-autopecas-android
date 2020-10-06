@@ -30,21 +30,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#F39249"
-                    android:text="Peça 1" />
+                    android:text="Cliente 1" />
 
                 <Button
                     android:id="@+id/second_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#F39249"
-                    android:text="Peça 2" />
+                    android:text="Cliente 2" />
 
                 <Button
                     android:id="@+id/third_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#F39249"
-                    android:text="Peça 3" />
+                    android:text="Cliente 3" />
 
                 <ProgressBar
                     android:id="@+id/progressBarHomeScreen"

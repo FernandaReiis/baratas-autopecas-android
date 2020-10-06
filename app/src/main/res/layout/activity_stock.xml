@@ -11,8 +11,27 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <include layout="@layout/toolbar"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/partsRecycler"
+                android:scrollbars="vertical"
+                android:scrollbarStyle="outsideOverlay"
+                android:clipToPadding="false"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                >
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </ScrollView>
     </LinearLayout>
 
     <include layout="@layout/nav_view"/>

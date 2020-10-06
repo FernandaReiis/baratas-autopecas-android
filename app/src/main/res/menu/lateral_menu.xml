@@ -34,6 +34,10 @@
             android:icon="@drawable/ic_disciplina_black"
             android:title="@string/nav_sale"
             android:checked="true"></item>
+        <item android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_disciplina_black"
+            android:title="@string/nav_logout"
+            android:checked="true"></item>
 
     </group>
 </menu>

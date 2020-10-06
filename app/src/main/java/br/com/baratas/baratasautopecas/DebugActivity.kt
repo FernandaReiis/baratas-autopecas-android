@@ -1,5 +1,6 @@
 package br.com.baratas.baratasautopecas
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,7 +14,7 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.toolbar.*
 
 open class DebugActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
+    private val context: Context get() = this
     private val TAG = "BaratasAutoPecas"
     private val className: String
         get() {
@@ -76,22 +77,31 @@ open class DebugActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.nav_customer -> { Toast.makeText(this, "Clicou em Cliente", Toast.LENGTH_LONG).show() }
-            R.id.nav_employee-> { }
-            R.id.nav_payment_method -> { }
-            R.id.nav_product -> { }
-            R.id.nav_provider -> { }
-            R.id.nav_sale -> { }
+            R.id.nav_customer -> {
+                var intent = Intent(this, HomeScreenActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.nav_employee-> { Toast.makeText(this, "Clicou em Funcionário", Toast.LENGTH_LONG).show() }
+            R.id.nav_payment_method -> { Toast.makeText(this, "Clicou em Método de Pagamento", Toast.LENGTH_LONG).show() }
+            R.id.nav_product -> { Toast.makeText(this, "Clicou em Produto", Toast.LENGTH_LONG).show() }
+            R.id.nav_provider -> { Toast.makeText(this, "Clicou em Fornecedor", Toast.LENGTH_LONG).show() }
+            R.id.nav_sale -> { Toast.makeText(this, "Clicou em Venda", Toast.LENGTH_LONG).show() }
             R.id.nav_stock -> {
                 var intent = Intent(this, StockActivity::class.java)
                 startActivity(intent)
             }
             R.id.nav_vehicle -> { }
+            R.id.nav_logout -> { logout() }
         }
 
         drawerLayout?.closeDrawer(GravityCompat.START)
 
         return true
+    }
+
+    private fun logout() {
+        val intent = Intent(context, MainActivity::class.java)
+        startActivity(intent)
     }
 
 

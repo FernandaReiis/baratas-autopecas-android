@@ -8,13 +8,14 @@
     <string name="nav_customers">Clientes</string>
     <string name="nav_providers">Fornecedores</string>
     <string name="nav_sales">Vendas</string>
-    <string name="nav_customer">Cliente</string>
-    <string name="nav_employee">Funcionário</string>
-    <string name="nav_product">Produto</string>
-    <string name="nav_provider">Fornecedor</string>
-    <string name="nav_vehicle">Veículo</string>
-    <string name="nav_payment_method">Método de Pagamento</string>
-    <string name="nav_sale">Venda</string>
+    <string name="nav_customer">Clientes</string>
+    <string name="nav_employee">Funcionários</string>
+    <string name="nav_product">Produtos</string>
+    <string name="nav_provider">Fornecedores</string>
+    <string name="nav_vehicle">Veículos</string>
+    <string name="nav_payment_method">Métodos de Pagamento</string>
+    <string name="nav_sale">Vendas</string>
     <string name="navigation_drawer_open">Abrir</string>
     <string name="navigation_drawe_close">Fechar</string>
+    <string name="nav_logout">Sair</string>
 </resources>
