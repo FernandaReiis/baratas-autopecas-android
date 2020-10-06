@@ -6,7 +6,9 @@ import android.os.Bundle
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_home_screen.*
 import kotlinx.android.synthetic.main.activity_stock.*
+import kotlinx.android.synthetic.main.activity_stock.layoutLateralMenu
 import kotlinx.android.synthetic.main.nav_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.io.Serializable
@@ -20,6 +22,7 @@ class StockActivity : DebugActivity()  {
         setContentView(R.layout.activity_stock)
         this.drawerLayout = layoutLateralMenu
         this.navView = lateral_menu
+        this.progressBar = progressBarStock
 
         setSupportActionBar(toolbar_view)
         supportActionBar?.title = "Estoque"

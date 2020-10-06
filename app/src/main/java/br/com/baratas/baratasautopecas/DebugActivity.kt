@@ -4,10 +4,14 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
@@ -24,6 +28,8 @@ open class DebugActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 
     var drawerLayout: DrawerLayout? = null
     var navView: NavigationView? = null
+    var currentContext: Context? = null
+    var progressBar: View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,7 +97,7 @@ open class DebugActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 startActivity(intent)
             }
             R.id.nav_vehicle -> { }
-            R.id.nav_logout -> { logout() }
+            R.id.nav_logout -> { onClickLogout() }
         }
 
         drawerLayout?.closeDrawer(GravityCompat.START)
@@ -99,7 +105,55 @@ open class DebugActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         return true
     }
 
-    private fun logout() {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        (menu?.findItem(R.id.action_search)?.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                Toast.makeText(currentContext, newText, Toast.LENGTH_LONG).show()
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                Toast.makeText(currentContext, query, Toast.LENGTH_LONG).show()
+                return false
+            }
+
+        })
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item?.itemId) {
+            R.id.action_search -> Toast.makeText(this, "Botão buscar", Toast.LENGTH_LONG).show()
+            R.id.action_config -> {
+                Toast.makeText(this, "Botão configurações", Toast.LENGTH_LONG).show()
+                onClickConfig()
+            }
+            R.id.action_refresh -> {
+                Toast.makeText(this, "Botão atualizar", Toast.LENGTH_LONG).show()
+                onClickRefresh()
+            }
+            android.R.id.home -> finish()
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun onClickConfig(){
+        val intent = Intent(context, ConfigActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun onClickRefresh(){
+        progressBar?.visibility = View.VISIBLE
+        Handler().postDelayed( {
+            progressBar?.visibility = View.GONE
+        }, 10000)
+    }
+
+    private fun onClickLogout() {
         val intent = Intent(context, MainActivity::class.java)
         startActivity(intent)
     }

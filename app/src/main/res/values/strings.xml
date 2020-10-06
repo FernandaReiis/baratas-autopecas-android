@@ -3,7 +3,6 @@
     <string name="action_search">Buscar</string>
     <string name="action_config">Configurações</string>
     <string name="action_refresh">Atualizar</string>
-    <string name="action_logout">Sair</string>
     <string name="nav_stock">Estoque</string>
     <string name="nav_customers">Clientes</string>
     <string name="nav_providers">Fornecedores</string>
