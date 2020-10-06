@@ -2,7 +2,6 @@ package br.com.baratas.baratasautopecas
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
@@ -11,14 +10,19 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import kotlinx.android.synthetic.main.activity_home_screen.*
+import kotlinx.android.synthetic.main.nav_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class HomeScreenActivity : AppCompatActivity() {
+
+class HomeScreenActivity : DebugActivity() {
 
     private val context: Context get() = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
+
+        this.drawerLayout = layoutLateralMenu
+        this.navView = lateral_menu
 
         var args = intent.extras
         val name = args?.getString("username")
@@ -29,13 +33,15 @@ class HomeScreenActivity : AppCompatActivity() {
         supportActionBar?.title = "Estoque"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        configureLateralMenu()
+
         first_btn.setOnClickListener { onClickButtons(first_btn.text.toString()) }
         second_btn.setOnClickListener { onClickButtons(second_btn.text.toString()) }
         third_btn.setOnClickListener { onClickButtons(third_btn.text.toString()) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
+        menuInflater.inflate(R.menu.main_menu, menu)
         (menu?.findItem(R.id.action_search)?.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(newText: String): Boolean {
