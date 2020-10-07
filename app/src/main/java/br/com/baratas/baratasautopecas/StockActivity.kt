@@ -42,14 +42,7 @@ class StockActivity : DebugActivity()  {
     private var parts = listOf<Part>()
     fun partsTask() {
         parts = PartService.getParts(this)
-        partsRecycler?.adapter = PartAdapter(parts) { onClickPart(it) }
-    }
-
-    fun onClickPart(part: Part) {
-        val intent = Intent(this, PartActivity::class.java)
-        intent.putExtra("part",  gson.toJson(part))
-        startActivity(intent)
-
+        partsRecycler?.adapter = PartAdapter(parts)
     }
 
 }

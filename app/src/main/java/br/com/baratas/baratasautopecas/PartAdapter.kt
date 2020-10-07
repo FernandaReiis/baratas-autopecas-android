@@ -11,19 +11,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 class PartAdapter(
-    val parts: List<Part>,
-    val onClick: (Part) -> Unit
+    val parts: List<Part>
 ): RecyclerView.Adapter<PartAdapter.PartsViewHolder>() {
     class PartsViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val cardName: TextView
-        val cardImg: ImageView
-        val cardProgress: ProgressBar
+        val cardQuantity: TextView
         val cardView: CardView
 
         init {
             cardName = view.findViewById(R.id.card_name)
-            cardImg = view.findViewById(R.id.card_img)
-            cardProgress = view.findViewById(R.id.card_progressbar)
+            cardQuantity = view.findViewById(R.id.card_quantity)
             cardView = view.findViewById(R.id.part_card)
         }
     }
@@ -39,24 +36,9 @@ class PartAdapter(
     override fun getItemCount(): Int = this.parts.size
 
     override fun onBindViewHolder(holder: PartsViewHolder, position: Int) {
-        val context = holder.itemView.context
-
         val part = this.parts[position]
 
         holder.cardName.text = part.name
-        holder.cardProgress.visibility = View.VISIBLE
-
-        Picasso.with(context).load(part.photo).fit().into(
-            holder.cardImg,
-            object: com.squareup.picasso.Callback {
-                override fun onSuccess() {
-                    holder.cardProgress.visibility = View.GONE
-                }
-
-                override fun onError() {
-                    holder.cardProgress.visibility = View.GONE
-                }
-            })
-        holder.itemView.setOnClickListener {onClick(part)}
+        holder.cardQuantity.text = part.quantity
     }
 }

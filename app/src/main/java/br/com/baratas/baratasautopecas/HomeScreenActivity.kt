@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home_screen.*
+import kotlinx.android.synthetic.main.lateral_menu_header.*
 import kotlinx.android.synthetic.main.nav_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
