@@ -135,6 +135,10 @@ open class DebugActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 Toast.makeText(this, "Botão atualizar", Toast.LENGTH_LONG).show()
                 onClickRefresh()
             }
+            R.id.action_add_part -> {
+                val it = Intent(this, NewPartActivity::class.java)
+                startActivity(it)
+            }
             android.R.id.home -> finish()
         }
 

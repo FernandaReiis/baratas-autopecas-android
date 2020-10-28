@@ -1,22 +1,61 @@
 package br.com.baratas.baratasautopecas
 
 import android.content.Context
+import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 object PartService {
 
-    fun getParts(context: Context): List<Part> {
-        val parts = mutableListOf<Part>()
+    val host = "http://pabloalmeida.pythonanywhere.com"
+    val TAG = "WS_BaratasAutoPecas"
 
-        for (i in 1..10) {
-            val c = Part()
-            c.name = "Peça $i"
-            c.description = "Descrição $i"
-            c.price = "Preço $i"
-            c.producer = "Fabricante $i"
-            c.quantity = "Quantidade $i"
-            c.photo = "https://chiptronic.com.br/blog/wp-content/uploads/2016/09/4-passos-para-encontrar-o-melhor-fornecedor-de-autope%C3%A7as-1.jpg"
-            parts.add(c)
+    fun getParts(context: Context): List<Part> {
+        if (AndroidUtils.isInternetDisponivel()) {
+            val url = "$host/pecas"
+            val json = HttpHelper.get(url)
+
+            Log.d(TAG, json)
+            var parts = parserJson<List<Part>>(json)
+            parts.forEach { saveOffline(it) }
+
+            return parts
+        } else {
+            val dao = DatabaseManager.getPartDAO()
+            val parts = dao.findAll()
+            return parts
         }
-        return parts
+    }
+
+    fun savePart(part: Part): Response {
+        if (AndroidUtils.isInternetDisponivel()) {
+            val json = HttpHelper.post("$host/pecas", part.toJson())
+            return parserJson(json)
+        }
+        else {
+            saveOffline(part)
+            return Response("OK", "Disciplina salva no dispositivo")
+        }
+    }
+
+    fun saveOffline(part: Part) : Boolean {
+        val dao = DatabaseManager.getPartDAO()
+
+        if (! existPart(part)) {
+            dao.insert(part)
+        }
+
+        return true
+
+    }
+
+    fun existPart(part: Part): Boolean {
+        val dao = DatabaseManager.getPartDAO()
+        return dao.getById(part.id) != null
+    }
+
+    inline fun <reified T> parserJson(json: String): T {
+        val type = object : TypeToken<T>(){}.type
+        return Gson().fromJson<T>(json, type)
     }
 }

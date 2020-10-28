@@ -17,10 +17,16 @@ class PartAdapter(
         val cardName: TextView
         val cardQuantity: TextView
         val cardView: CardView
+        val cardDescription: TextView
+        val cardProducer: TextView
+        val cardPrice: TextView
 
         init {
             cardName = view.findViewById(R.id.card_name)
             cardQuantity = view.findViewById(R.id.card_quantity)
+            cardDescription = view.findViewById(R.id.card_description)
+            cardProducer = view.findViewById(R.id.card_producer)
+            cardPrice = view.findViewById(R.id.card_price)
             cardView = view.findViewById(R.id.part_card)
         }
     }
@@ -40,5 +46,8 @@ class PartAdapter(
 
         holder.cardName.text = part.name
         holder.cardQuantity.text = part.quantity
+        holder.cardDescription.text = part.description
+        holder.cardProducer.text = part.producer
+        holder.cardPrice.text = part.price
     }
 }

@@ -7,15 +7,21 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_stock.*
 import kotlinx.android.synthetic.main.login.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity() : AppCompatActivity() {
 
     private val context: Context get() = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
+
+        userField.setText(Prefs.getString("rememberName"))
+        passwordField.setText(Prefs.getString("rememberPassword"))
+        checkBoxLogin.isChecked = Prefs.getBoolean("remember")
+
         welcomeLogin.text = "Bem-vindo, Faça seu Login!"
         imageField.setImageResource(R.drawable.autopecas)
         btnLogin.setOnClickListener {onClickLogin() }
@@ -27,6 +33,17 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed( {
             val username = userField.text.toString()
             val password = passwordField.text.toString()
+
+            val remember = checkBoxLogin.isChecked
+            Prefs.setBoolean("remember", remember)
+
+            if (remember) {
+                Prefs.setString("rememberName", username)
+                Prefs.setString("rememberPassword", password)
+            } else {
+                Prefs.setString("rememberName", "")
+                Prefs.setString("rememberPassword", "")
+            }
 
             val intent = Intent(context, HomeScreenActivity::class.java)
 

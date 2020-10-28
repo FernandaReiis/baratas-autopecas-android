@@ -41,8 +41,13 @@ class StockActivity : DebugActivity()  {
 
     private var parts = listOf<Part>()
     fun partsTask() {
-        parts = PartService.getParts(this)
-        partsRecycler?.adapter = PartAdapter(parts)
+        Thread{
+            parts = PartService.getParts(context)
+            runOnUiThread {
+                partsRecycler?.adapter = PartAdapter(parts)
+            }
+        }.start()
+
     }
 
 }
