@@ -1,5 +1,6 @@
 package br.com.baratas.baratasautopecas
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_new_part.*
@@ -20,11 +21,18 @@ class NewPartActivity : AppCompatActivity() {
 
             Thread {
                 PartService.savePart(p)
+                sendNotification(p)
                 runOnUiThread() {
                     finish()
                 }
             }.start()
 
         }
+    }
+
+    fun sendNotification(part: Part) {
+        val intent = Intent(this, StockActivity::class.java)
+        intent.putExtra("part", part)
+        NotificationUtil.create(1, intent, "BaratasAutoPecas", "Você tem um novo item no estoque!")
     }
 }
