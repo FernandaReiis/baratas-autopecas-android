@@ -84,7 +84,7 @@ open class DebugActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.nav_customer -> {
-                var intent = Intent(this, HomeScreenActivity::class.java)
+                var intent = Intent(this, CustomersActivity::class.java)
                 startActivity(intent)
             }
             R.id.nav_employee-> { Toast.makeText(this, "Clicou em Funcionário", Toast.LENGTH_LONG).show() }
@@ -100,6 +100,10 @@ open class DebugActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
             R.id.nav_logout -> { onClickLogout() }
             R.id.nav_localization -> {
                 var intent = Intent(this, MapsActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.nav_dashboard -> {
+                var intent = Intent(this, HomeScreenActivity::class.java)
                 startActivity(intent)
             }
         }

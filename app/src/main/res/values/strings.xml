@@ -22,4 +22,11 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nav_localization">Localização</string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="total_parts">Peças no estoque</string>
+    <string name="total_customers">Total clientes</string>
+    <string name="total_providers">Total fornecedores</string>
+    <string name="total_sales">Total vendas</string>
+    <string name="vehicle_types">Tipos veículos</string>
+    <string name="total_employees">Equipe</string>
 </resources>

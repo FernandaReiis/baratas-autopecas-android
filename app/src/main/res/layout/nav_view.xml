@@ -9,6 +9,6 @@
     android:fitsSystemWindows="true"
     app:headerLayout="@layout/lateral_menu_header"
     app:menu="@menu/lateral_menu"
-    tools:showIn="@layout/activity_home_screen">
+    tools:showIn="@layout/activity_customers">
 
 </com.google.android.material.navigation.NavigationView>

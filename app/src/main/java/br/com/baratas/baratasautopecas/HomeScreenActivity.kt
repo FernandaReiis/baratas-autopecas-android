@@ -1,18 +1,15 @@
 package br.com.baratas.baratasautopecas
 
-import android.content.Context
-import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_customers.*
+import kotlinx.android.synthetic.main.activity_customers.layoutLateralMenu
 import kotlinx.android.synthetic.main.activity_home_screen.*
-import kotlinx.android.synthetic.main.lateral_menu_header.*
 import kotlinx.android.synthetic.main.nav_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-
 class HomeScreenActivity : DebugActivity() {
-
-    private val context: Context get() = this
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
@@ -20,7 +17,12 @@ class HomeScreenActivity : DebugActivity() {
         this.drawerLayout = layoutLateralMenu
         this.navView = lateral_menu
         this.currentContext = this
-        this.progressBar = progressBarHomeScreen
+        part_quantity.text = "8"
+        customer_quantity.text = "10"
+        employee_quantity.text = "15"
+        provider_quantity.text = "2"
+        sale_quantity.text = "30"
+        vehicle_types.text = "2"
 
         var args = intent.extras
         val name = args?.getString("username")
@@ -28,19 +30,10 @@ class HomeScreenActivity : DebugActivity() {
         Toast.makeText(this, "Bem-vindo $name", Toast.LENGTH_LONG).show()
 
         setSupportActionBar(toolbar_view)
-        supportActionBar?.title = "Clientes"
+        supportActionBar?.title = "Dashboard"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         configureLateralMenu()
-
-        first_btn.setOnClickListener { onClickButtons(first_btn.text.toString()) }
-        second_btn.setOnClickListener { onClickButtons(second_btn.text.toString()) }
-        third_btn.setOnClickListener { onClickButtons(third_btn.text.toString()) }
     }
 
-    private fun onClickButtons(nameButton: String){
-        val intent = Intent(context, ClientActivity::class.java)
-        intent.putExtra("client", nameButton)
-        startActivity(intent)
-    }
 }

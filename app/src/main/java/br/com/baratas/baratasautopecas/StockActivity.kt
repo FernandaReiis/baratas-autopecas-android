@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_home_screen.*
+import kotlinx.android.synthetic.main.activity_customers.*
 import kotlinx.android.synthetic.main.activity_stock.*
 import kotlinx.android.synthetic.main.activity_stock.layoutLateralMenu
 import kotlinx.android.synthetic.main.nav_view.*

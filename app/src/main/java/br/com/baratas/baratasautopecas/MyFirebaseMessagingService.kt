@@ -24,7 +24,7 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
     }
 
     private fun showNotification(remoteMessage: RemoteMessage?) {
-        val intent = Intent(this, HomeScreenActivity::class.java)
+        val intent = Intent(this, CustomersActivity::class.java)
         val messageNotification = remoteMessage?.notification
         val messageData = remoteMessage?.data ?: mapOf()
         if (messageNotification != null) {

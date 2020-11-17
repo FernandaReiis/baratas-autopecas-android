@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_stock.*
 import kotlinx.android.synthetic.main.login.*
 
 
