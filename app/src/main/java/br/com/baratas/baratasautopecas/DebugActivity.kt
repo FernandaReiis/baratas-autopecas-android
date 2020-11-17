@@ -98,6 +98,10 @@ open class DebugActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
             }
             R.id.nav_vehicle -> { }
             R.id.nav_logout -> { onClickLogout() }
+            R.id.nav_localization -> {
+                var intent = Intent(this, MapsActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         drawerLayout?.closeDrawer(GravityCompat.START)
