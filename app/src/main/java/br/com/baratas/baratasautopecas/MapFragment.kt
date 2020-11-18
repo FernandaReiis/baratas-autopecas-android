@@ -31,7 +31,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         if (ok) map?.isMyLocationEnabled = true
 
-        val location = LatLng(-23.550227, -46.633911)
+        val location = LatLng(-23.5784, -46.7451)
 
         val update = CameraUpdateFactory.newLatLngZoom(location, 18f)
         map?.moveCamera(update)
